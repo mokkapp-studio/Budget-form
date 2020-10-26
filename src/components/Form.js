@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import Error from './error';
 import shortid from 'shortid';
 
-const Myform = ({updateNewBadge}) => {
+const Myform = ({setGastos, setCreargasto}) => {
 
 
     const [name, setName] = useState('');
@@ -27,7 +27,8 @@ const Myform = ({updateNewBadge}) => {
         }
 
         //console.log(budget)
-        updateNewBadge(budget)
+        setGastos(budget)
+        setCreargasto(true)
         
         setName('');
         setQuantity (0);

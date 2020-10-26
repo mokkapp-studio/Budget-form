@@ -1,4 +1,5 @@
 import React, {Fragment } from 'react';
+import { reviewBudget } from '../helpers'; 
 
 const Control = ({budget, rest}) => {
     return ( 
@@ -6,8 +7,8 @@ const Control = ({budget, rest}) => {
             <div className="alert alert-primary">
                 Presupuesto: {budget}€        
             </div>
-            <div className="alert">
-                Restante: {rest} €
+            <div className={reviewBudget(budget, rest)}>
+                Restante: {rest}€
             </div>
         </Fragment>
        
@@ -16,3 +17,4 @@ const Control = ({budget, rest}) => {
  
 export default Control;
 
+ 

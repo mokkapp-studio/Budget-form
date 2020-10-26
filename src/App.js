@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import Questions from './components/questions';
 import Myform from './components/Form'
 import List from './components/List';
@@ -10,14 +10,29 @@ const App = () => {
   const [rest, setRest] = useState(0);
   const [showquestion, setShowquestion] = useState(true);
   const [budges, setBudges] = useState([])
+  const [gasto, setGastos] = useState({})
+  const [creargasto, setCreargasto ] = useState(false)
 
 
-  const updateNewBadge = budget =>{
+  useEffect(() =>{
+   if(creargasto){
+
+    // add budget
     setBudges([
       ...budges,
-      budget
-    ])
-  }
+      gasto
+    ]);
+
+    // rest budet
+    const budgetRest = rest - gasto.quantity
+    setRest(budgetRest)
+
+
+    setCreargasto(false)
+   }
+  }, [gasto, creargasto, budges, rest]);
+
+
 
   return ( 
     <div className="container">
@@ -36,7 +51,8 @@ const App = () => {
             <div className="row">
               <div className="one-half column">
                 <Myform
-                  updateNewBadge={updateNewBadge}
+                  setGastos={setGastos}
+                  setCreargasto={setCreargasto}
                 />
               </div>
               <div className="one-half column">
