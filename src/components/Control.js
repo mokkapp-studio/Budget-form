@@ -5,10 +5,10 @@ const Control = ({budget, rest}) => {
     return ( 
         <Fragment>
             <div className="alert alert-primary">
-                Presupuesto: {budget}€        
+                My Budget: {budget}€        
             </div>
             <div className={reviewBudget(budget, rest)}>
-                Restante: {rest}€
+                Rest: {rest}€
             </div>
         </Fragment>
        
